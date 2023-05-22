@@ -7,6 +7,8 @@ llvm-path:
 headers:
   entry-points:
     - 'public\fpdfview.h' 
+    - 'public\fpdf_text.h' 
+    - 'public\fpdfview.h' 
   include-directives:
     - 'public/**'
 comments:
