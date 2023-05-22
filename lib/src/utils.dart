@@ -14,7 +14,7 @@ Pointer<Void> stringToNativeVoid(String str, {Allocator allocator = calloc}) {
   return result.cast();
 }
 
-Pointer<Utf8> stringToNativeChar(String str, {Allocator allocator = calloc}) {
+Pointer<Char> stringToNativeChar(String str, {Allocator allocator = calloc}) {
   final units = utf8.encode(str);
   final result = allocator<Uint8>(units.length + 1);
   final nativeString = result.asTypedList(units.length + 1);
@@ -23,7 +23,7 @@ Pointer<Utf8> stringToNativeChar(String str, {Allocator allocator = calloc}) {
   return result.cast();
 }
 
-Pointer<Int8> stringToNativeInt8(String str, {Allocator allocator = calloc}) {
+Pointer<Char> stringToNativeInt8(String str, {Allocator allocator = calloc}) {
   final units = utf8.encode(str);
   final result = allocator<Uint8>(units.length + 1);
   final nativeString = result.asTypedList(units.length + 1);

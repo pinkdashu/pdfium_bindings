@@ -65,7 +65,15 @@ void main() {
   final bitmap = pdfium.FPDFBitmap_Create(width, height, 0);
   pdfium.FPDFBitmap_FillRect(bitmap, 0, 0, width, height, background);
   pdfium.FPDF_RenderPageBitmap(
-      bitmap, page, startX, startY, sizeX, sizeY, rotate, 0,);
+    bitmap,
+    page,
+    startX,
+    startY,
+    sizeX,
+    sizeY,
+    rotate,
+    0,
+  );
   //  The pointer to the first byte of the bitmap buffer The data is in BGRA format
   final pointer = pdfium.FPDFBitmap_GetBuffer(bitmap);
   //stride = width * 4 bytes per pixel BGRA
@@ -73,11 +81,11 @@ void main() {
   //print('stride $stride');
 
   final Image image = Image.fromBytes(
-      width: width,
-      height: height,
-      bytes: pointer.asTypedList(width * height * 4).buffer,
-      order: ChannelOrder.bgra,
-      numChannels: 4,
+    width: width,
+    height: height,
+    bytes: pointer.cast<Uint8>().asTypedList(width * height * 4).buffer,
+    order: ChannelOrder.bgra,
+    numChannels: 4,
   );
 
   // save bitmap as PNG.
